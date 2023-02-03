@@ -1,5 +1,6 @@
 ﻿using PersonalFramework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuState : FlowStateBase
 {
@@ -13,8 +14,7 @@ public class MainMenuState : FlowStateBase
     {
         if (message is string str && str == "Play")
         {
-            // Start a new scene.
-            Debug.Log("The play button was pressed");
+            SceneManager.LoadScene("GameScene");
         }
     }
 }

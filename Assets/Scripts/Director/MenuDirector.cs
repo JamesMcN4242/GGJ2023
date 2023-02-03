@@ -1,12 +1,9 @@
 using PersonalFramework;
 
-namespace Director
+public sealed class MenuDirector : LocalDirector
 {
-    public sealed class MenuDirector : LocalDirector
+    public void Awake()
     {
-        public void Awake()
-        {
-            m_stateController.PushState(new MainMenuState());
-        }
+        m_stateController.PushState(new MainMenuState());
     }
 }
