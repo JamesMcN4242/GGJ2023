@@ -27,6 +27,7 @@ public class GroundSystem
 
             if (child.position.x < -50.0f)
             {
+                Item.CreateItemObject(child);
                 float maxX = 0f;
                 for (int j = 0; j < groundParent.childCount; ++j)
                 {

@@ -13,7 +13,7 @@ public static class Item
         string[] evilCategories = { "daisy", "dandelion" };
 
 
-        for (int i = 1; i <= 4; i++)
+        for (int i = 1; i <= 3; i++)
 		{
             var isGood = isNextGood();
             var sourceFile = "";
@@ -25,19 +25,11 @@ public static class Item
             {
                 sourceFile = evilCategories[randomInt];
             }
-            var source = Resources.Load<Sprite>("Art/"+ sourceFile);
-            var image = itemObj.AddComponent<Image>();
-            image.sprite = source;//TODO: change daisy to random
-
+            var source = Resources.Load<GameObject>("Art/Plants/"+ sourceFile);
+            var rangePos = UnityEngine.Random.Range(-5, 30);
+            Debug.Log("sourceFile: " + sourceFile + " rangePos " + rangePos);
+            GameObject.Instantiate(source, new Vector3(rangePos, 0f, 0f), Quaternion.identity, parent);
         }
-
-        
-        //var source = itemObj.AddComponent<SpriteMeshType>();
-        //source.clip = Resources.Load<AudioClip>("Audio/Music");
-        //source.loop = true;
-        //source.Play();
-
-        //GameObject.DontDestroyOnLoad(audioObj);
     }
 
     private static bool isNextGood(int truePercentage = 50)
