@@ -28,7 +28,14 @@ public static class Item
             var source = Resources.Load<GameObject>("Art/Plants/"+ sourceFile);
             var rangePos = UnityEngine.Random.Range(-5, 30);
             Debug.Log("sourceFile: " + sourceFile + " rangePos " + rangePos);
-            GameObject.Instantiate(source, new Vector3(rangePos, 0f, 0f), Quaternion.identity, parent);
+            
+            var obj = GameObject.Instantiate(source, new Vector3(rangePos, 0f, 0f), Quaternion.identity, parent);
+            
+            //What a hack this is.
+            var transform = obj.transform;
+            transform.parent = null;
+            transform.localScale = Vector3.one * 10f;
+            transform.parent = parent;
         }
     }
 
