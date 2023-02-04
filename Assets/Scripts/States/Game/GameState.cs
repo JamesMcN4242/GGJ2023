@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameState : FlowStateBase
 {
     private InputSystem inputSystem;
+    private GroundSystem groundSystem;
     
     protected override bool AquireUIFromScene()
     {
@@ -22,6 +23,7 @@ public class GameState : FlowStateBase
     protected override void StartPresentingState()
     {
         inputSystem = new InputSystem();
+        groundSystem = new GroundSystem();
     }
 
     protected override void UpdateActiveState()
@@ -29,5 +31,6 @@ public class GameState : FlowStateBase
         float dt = Time.deltaTime;
         
         inputSystem.UpdateTouch(dt);
+        groundSystem.UpdateMovement(dt);
     }
 }
