@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameState : FlowStateBase
 {
+    private InputSystem inputSystem;
+    
     protected override bool AquireUIFromScene()
     {
         m_ui = Object.FindObjectOfType<GameUI>();
@@ -15,5 +17,17 @@ public class GameState : FlowStateBase
         {
             ControllingStateStack.PushState(new PauseState());
         }
+    }
+
+    protected override void StartPresentingState()
+    {
+        inputSystem = new InputSystem();
+    }
+
+    protected override void UpdateActiveState()
+    {
+        float dt = Time.deltaTime;
+        
+        inputSystem.UpdateTouch(dt);
     }
 }
