@@ -51,6 +51,10 @@ public class InputSystem
             if (Physics.Raycast(touchRay, out RaycastHit hit))
             {
                 interactionBody = hit.transform.GetComponent<Rigidbody>();
+                if (interactionBody != null)
+                {
+                    interactionBody.transform.parent = null;
+                }
             }
         }
 
@@ -70,13 +74,8 @@ public class InputSystem
         if (interactionBody != null)
         {
             gameUI.ResetBumperAlphaValues();
+            interactionBody.useGravity = true;
             
-            // TODO: Enable Gravity depending on if it is still in the ground object.
-            if (interactionBody.velocity.magnitude > 0.001f)
-            {
-                interactionBody.useGravity = true;
-            }
-
             previousTouchPos = null;
             interactionBody = null;
         }

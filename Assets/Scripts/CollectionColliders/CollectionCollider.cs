@@ -12,8 +12,10 @@ public class CollectionCollider : MonoBehaviour
         
         foreach (var hitObj in hitObjs)
         {
-            correct += expectEvil == hitObj.CompareTag("EvilObject") ? 1 : 0;
-            wrong += expectEvil != hitObj.CompareTag("EvilObject") ? 1 : 0;
+            bool interactedWith = hitObj.layer == LayerMask.NameToLayer("InteractedWith");
+            correct += interactedWith && expectEvil == hitObj.CompareTag("EvilObject") ? 1 : 0;
+            wrong += !interactedWith || expectEvil != hitObj.CompareTag("EvilObject") ? 1 : 0;
+            Destroy(hitObj);
         }
         
         hitObjs.Clear();
