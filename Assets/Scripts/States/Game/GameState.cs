@@ -39,9 +39,10 @@ public class GameState : FlowStateBase
             Debug.Log("Remove health here");
             health.updateHealth();
         }
+        
         if (health.lives <= 0)
         {
-            //navigate to Game Over screen
+            ControllingStateStack.PushState(new GameOverState());
         }
     }
 }
