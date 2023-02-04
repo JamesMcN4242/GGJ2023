@@ -5,7 +5,8 @@ public class GameState : FlowStateBase
 {
     private InputSystem inputSystem;
     private GroundSystem groundSystem;
-    
+    private HealthState health = new HealthState();
+
     protected override bool AquireUIFromScene()
     {
         m_ui = Object.FindObjectOfType<GameUI>();
@@ -32,5 +33,15 @@ public class GameState : FlowStateBase
         
         inputSystem.UpdateTouch(dt);
         groundSystem.UpdateMovement(dt);
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Debug.Log("Remove health here");
+            health.updateHealth();
+        }
+        if (health.lives <= 0)
+        {
+            //navigate to Game Over screen
+        }
     }
 }
