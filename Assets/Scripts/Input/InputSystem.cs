@@ -6,10 +6,12 @@ public class InputSystem
     private Vector3? previousTouchPos;
     private Rigidbody interactionBody;
     private Camera camera;
+    private GameUI gameUI;
 
-    public InputSystem()
+    public InputSystem(GameUI gameUIState)
     {
         camera = Camera.main;
+        gameUI = gameUIState;
     }
 
     public void UpdateTouch(float dt)
@@ -33,11 +35,15 @@ public class InputSystem
 #endif
         
         var touchWorldPos = camera.ScreenToWorldPoint(inputPosition);
-        
-        
+
         if (interactionBody != null)
         {
             interactionBody.position = new Vector3(touchWorldPos.x, touchWorldPos.y, interactionBody.position.z);
+            gameUI.SetBumperAlphaValues(interactionBody.position);
+            if (interactionBody.gameObject.layer != LayerMask.NameToLayer("InteractedWith"))
+            {
+                interactionBody.gameObject.layer = LayerMask.NameToLayer("InteractedWith");
+            }
         }
         else
         {
@@ -63,6 +69,8 @@ public class InputSystem
     {
         if (interactionBody != null)
         {
+            gameUI.ResetBumperAlphaValues();
+            
             // TODO: Enable Gravity depending on if it is still in the ground object.
             if (interactionBody.velocity.magnitude > 0.001f)
             {
