@@ -22,6 +22,9 @@ public class CollectionCollider : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        hitObjs.Add(other.gameObject);
+        if (expectEvil || other.gameObject.layer == LayerMask.NameToLayer("InteractedWith"))
+        {
+            hitObjs.Add(other.gameObject);
+        }
     }
 }

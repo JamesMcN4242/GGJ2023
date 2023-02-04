@@ -32,15 +32,14 @@ public class GroundSystem
                 for (int j = 0; j < groundParent.childCount; ++j)
                 {
                     if (i == j) continue;
-
-                    maxX = Mathf.Max(maxX, groundParent.GetChild(j).position.x);
+                    
+                    const int lastSoilChildIndex = 9;
+                    maxX = Mathf.Max(maxX, groundParent.GetChild(j)
+                        .GetChild(lastSoilChildIndex).position.x);
                 }
 
-                const float planeScale = 10.0f;
-                child.position = new Vector3(maxX + (child.lossyScale.x * planeScale) - 1.0f, child.position.y, child.position.z);
-                
-                //TODO: Remove existent roots.
-                //TODO: Re-add root images.
+                const float padding = 15f;
+                child.position = new Vector3(maxX + padding, child.position.y, child.position.z);
             }
         }
     }
