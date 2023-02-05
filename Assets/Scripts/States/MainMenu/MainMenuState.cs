@@ -4,15 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuState : FlowStateBase
 {
+    private MainMenuUI mainMenuUI;
+    
     protected override bool AquireUIFromScene()
     {
-        m_ui = Object.FindObjectOfType<MainMenuUI>();
+        m_ui = mainMenuUI = Object.FindObjectOfType<MainMenuUI>();
         return m_ui != null;
     }
 
     protected override void StartPresentingState()
     {
-        (m_ui as MainMenuUI).SetAudioText($"Turn Audio {(AudioMasterControl.AudioMuted ? "On" : "Off")}!");
+        mainMenuUI.SetAudioText($"Turn Audio {(AudioMasterControl.AudioMuted ? "On" : "Off")}!");
     }
 
     protected override void HandleMessage(object message)
@@ -28,7 +30,7 @@ public class MainMenuState : FlowStateBase
                 break;
             case "ToggleAudio":
                 AudioMasterControl.ToggleMute();
-                (m_ui as MainMenuUI).SetAudioText($"Turn Audio {(AudioMasterControl.AudioMuted ? "On" : "Off")}!");
+                mainMenuUI.SetAudioText($"Turn Audio {(AudioMasterControl.AudioMuted ? "On" : "Off")}!");
                 break;
         }
     }
