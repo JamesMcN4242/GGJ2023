@@ -46,6 +46,8 @@ public class GameState : FlowStateBase
 
     protected override void FixedUpdateActiveState()
     {
+        Physics.Simulate(Time.fixedDeltaTime);
+        
         foreach (var collectionCollider in colliders)
         {
             var hit = collectionCollider.ConsumeObjs();

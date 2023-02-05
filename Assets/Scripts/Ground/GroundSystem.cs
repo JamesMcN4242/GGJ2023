@@ -3,7 +3,7 @@ using UnityEngine;
 public class GroundSystem
 {
     private const float minSpeed = 0.1f;
-    private const float maxSpeed = 30.0f;
+    private const float maxSpeed = 15.0f;
     private const float timeBeforeMaxSpeed = 60.0f;
     
     private Transform groundParent;
