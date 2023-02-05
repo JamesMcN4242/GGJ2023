@@ -25,9 +25,9 @@ public class TutorialState : FlowStateBase
     {
         tutorialImages = new[]
         {
-            Resources.Load<Sprite>("Art/Tutorial/ImageOne"),
-            Resources.Load<Sprite>("Art/Tutorial/ImageTwo"),
-            Resources.Load<Sprite>("Art/Tutorial/ImageThree"),
+            Resources.Load<Sprite>("Tutorial/Image1"),
+            Resources.Load<Sprite>("Tutorial/Image2"),
+            Resources.Load<Sprite>("Tutorial/Image3"),
         };
         
         tutorialUI.SetImage(tutorialImages[tutorialIndex]);
