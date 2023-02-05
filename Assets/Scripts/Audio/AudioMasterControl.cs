@@ -13,6 +13,7 @@ public static class AudioMasterControl
     {
         bool isMuted = AudioMuted;
         PlayerPrefs.SetInt("MUTE_AUDIO", isMuted ? 0 : 1);
+        PlayerPrefs.Save();
         SetMuteStatus();
     }
 }

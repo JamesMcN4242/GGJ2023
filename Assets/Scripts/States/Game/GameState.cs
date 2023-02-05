@@ -44,7 +44,7 @@ public class GameState : FlowStateBase
         
         if (health.Lives <= 0)
         {
-            ControllingStateStack.PushState(new GameOverState());
+            ControllingStateStack.PushState(new GameOverState(score.Score));
         }
     }
 
