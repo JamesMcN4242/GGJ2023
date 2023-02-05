@@ -73,11 +73,12 @@ public class InputSystem
     {
         if (interactionBody != null)
         {
-            gameUI.ResetBumperAlphaValues();
             interactionBody.useGravity = true;
             
             previousTouchPos = null;
             interactionBody = null;
         }
+        
+        gameUI.ResetBumperAlphaValues();
     }
 }
