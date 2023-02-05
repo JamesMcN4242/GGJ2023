@@ -54,6 +54,7 @@ public class InputSystem
                 if (interactionBody != null)
                 {
                     interactionBody.transform.parent = null;
+                    AudioMasterControl.PlayWoosh();
                 }
             }
         }

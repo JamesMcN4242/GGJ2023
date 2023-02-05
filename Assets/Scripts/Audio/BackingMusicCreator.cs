@@ -8,6 +8,7 @@ public static class BackingMusicCreator
         var audioObj = new GameObject("BackingMusic");
         var source = audioObj.AddComponent<AudioSource>();
         source.clip = Resources.Load<AudioClip>("Audio/Music");
+        source.volume = 0.8f;
         source.loop = true;
         source.Play();
         
