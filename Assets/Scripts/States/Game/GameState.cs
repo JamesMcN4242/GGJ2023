@@ -28,7 +28,7 @@ public class GameState : FlowStateBase
     protected override void StartPresentingState()
     {
         inputSystem = new InputSystem(gameUI);
-        groundSystem = new GroundSystem("GroundParent", 15.0f, true, 15.0f);
+        groundSystem = new GroundSystem("GroundParent", 20.0f, true, 15.0f);
         hillSystem = new GroundSystem("HillParent", 5.0f, false, 7.0f);
         colliders = Object.FindObjectsOfType<CollectionCollider>();
         gameUI.SetLives(health.Lives);

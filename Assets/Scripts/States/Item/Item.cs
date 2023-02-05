@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PlasticPipe.Server;
 using UnityEngine;
 
 public static class Item
@@ -18,7 +19,8 @@ public static class Item
         var largestX = parent.GetChild(9).position.x;
         var exclude = new HashSet<float>() { };
 
-        for (int i = 1; i < 3; i++)
+        int randomAmount = Random.Range(2, 4);
+        for (int i = 1; i <= randomAmount; i++)
 		{
             var isGood = isNextGood();
             var randomInt = UnityEngine.Random.Range(0, goodCategories.Length);
@@ -30,17 +32,15 @@ public static class Item
             bool rangeAlreadySet = true;
             while (rangeAlreadySet)
             {
+                rangeAlreadySet = false;
                 rangePos = Random.Range(smallestX, largestX);
                 foreach (var item in exclude)
                 {
-                    if (item - 1 <= rangePos && rangePos <= item + 1)
-                        rangeAlreadySet = true;
+                    rangeAlreadySet |= item - 1 <= rangePos && rangePos <= item + 1;
                 }
             }
+            
             exclude.Add(rangePos);
-            //var rangePos = Random.Range(smallestX, largestX);
-            Debug.Log($"sourceFile: {sourceFile}. rangePos: {rangePos}");
-
             var obj = Object.Instantiate(source, new Vector3(rangePos, -1.2f, -7f), Quaternion.identity, parent);
             
             // What a hack this is.
