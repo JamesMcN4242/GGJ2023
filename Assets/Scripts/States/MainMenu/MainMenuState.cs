@@ -10,15 +10,26 @@ public class MainMenuState : FlowStateBase
         return m_ui != null;
     }
 
+    protected override void StartPresentingState()
+    {
+        (m_ui as MainMenuUI).SetAudioText($"Turn Audio {(AudioMasterControl.AudioMuted ? "On" : "Off")}!");
+    }
+
     protected override void HandleMessage(object message)
     {
-        if (message is string str && str == "Play")
+        string str = message as string;
+        switch (str)
         {
-            SceneManager.LoadScene("GameScene");
-        }
-        else if (message is string str2 && str2 == "Tutorial")
-        {
-            SceneManager.LoadScene("TutorialScene");
+            case "Play":
+                SceneManager.LoadScene("GameScene");
+                break;
+            case "Tutorial":
+                SceneManager.LoadScene("TutorialScene");
+                break;
+            case "ToggleAudio":
+                AudioMasterControl.ToggleMute();
+                (m_ui as MainMenuUI).SetAudioText($"Turn Audio {(AudioMasterControl.AudioMuted ? "On" : "Off")}!");
+                break;
         }
     }
 }

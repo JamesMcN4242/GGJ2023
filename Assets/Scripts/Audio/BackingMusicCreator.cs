@@ -12,5 +12,6 @@ public static class BackingMusicCreator
         source.Play();
         
         GameObject.DontDestroyOnLoad(audioObj);
+        AudioMasterControl.SetMuteStatus();
     }
 }
