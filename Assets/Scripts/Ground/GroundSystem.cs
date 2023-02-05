@@ -3,15 +3,20 @@ using UnityEngine;
 public class GroundSystem
 {
     private const float minSpeed = 0.1f;
-    private const float maxSpeed = 15.0f;
     private const float timeBeforeMaxSpeed = 60.0f;
     
     private Transform groundParent;
+    private float maxSpeed;
+    private float padding;
     private float timeRunning;
+    private bool createItems;
     
-    public GroundSystem()
+    public GroundSystem(string parentName, float maxSpeedToHit, bool createVeg, float paddingForReset)
     {
-        groundParent = GameObject.Find("GroundParent").transform;
+        groundParent = GameObject.Find(parentName).transform;
+        maxSpeed = maxSpeedToHit;
+        createItems = createVeg;
+        padding = paddingForReset;
     }
 
     public void UpdateMovement(float dt)
@@ -27,18 +32,22 @@ public class GroundSystem
 
             if (child.position.x < -50.0f)
             {
-                Item.CreateItemObject(child);
+                if (createItems)
+                {
+                    Item.CreateItemObject(child);
+                }
+
                 float maxX = 0f;
                 for (int j = 0; j < groundParent.childCount; ++j)
                 {
                     if (i == j) continue;
                     
                     const int lastSoilChildIndex = 9;
+                    const int lastHillIndex = 2;
                     maxX = Mathf.Max(maxX, groundParent.GetChild(j)
-                        .GetChild(lastSoilChildIndex).position.x);
+                        .GetChild(createItems ? lastSoilChildIndex : lastHillIndex).position.x);
                 }
 
-                const float padding = 15f;
                 child.position = new Vector3(maxX + padding, child.position.y, child.position.z);
             }
         }

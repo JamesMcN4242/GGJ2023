@@ -6,6 +6,7 @@ public class GameState : FlowStateBase
     private GameUI gameUI;
     private InputSystem inputSystem;
     private GroundSystem groundSystem;
+    private GroundSystem hillSystem;
     private HealthState health = new ();
     private ScoreSystem score = new();
     private CollectionCollider[] colliders;
@@ -27,7 +28,8 @@ public class GameState : FlowStateBase
     protected override void StartPresentingState()
     {
         inputSystem = new InputSystem(gameUI);
-        groundSystem = new GroundSystem();
+        groundSystem = new GroundSystem("GroundParent", 15.0f, true, 15.0f);
+        hillSystem = new GroundSystem("HillParent", 50.0f, false, 5.0f);
         colliders = Object.FindObjectsOfType<CollectionCollider>();
         gameUI.SetLives(health.Lives);
     }
@@ -38,6 +40,7 @@ public class GameState : FlowStateBase
         
         inputSystem.UpdateTouch(dt);
         groundSystem.UpdateMovement(dt);
+        hillSystem.UpdateMovement(dt);
         
         if (health.Lives <= 0)
         {
