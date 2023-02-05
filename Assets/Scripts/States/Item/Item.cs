@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public static class Item
 {
@@ -14,7 +16,8 @@ public static class Item
         // Terrible solution, but really not vibing with re-arranging some prefabs to make this better.
         var smallestX = parent.GetChild(7).position.x;
         var largestX = parent.GetChild(9).position.x;
-        
+        var exclude = new HashSet<float>() { };
+
         for (int i = 1; i <= 3; i++)
 		{
             var isGood = isNextGood();
@@ -23,9 +26,17 @@ public static class Item
             
             var source = Resources.Load<GameObject>($"Art/Plants/{sourceFile}");
 
-            var rangePos = Random.Range(smallestX, largestX);
+            var rangePos = 0f;
+            bool rangeAlreadySet = true;
+            while (rangeAlreadySet)
+            {
+                rangePos = Random.Range(smallestX, largestX);
+                rangeAlreadySet = exclude.Contains(rangePos);
+            }
+            exclude.Add(rangePos);
+            //var rangePos = Random.Range(smallestX, largestX);
             Debug.Log($"sourceFile: {sourceFile}. rangePos: {rangePos}");
-            
+
             var obj = Object.Instantiate(source, new Vector3(rangePos, -1.2f, -7f), Quaternion.identity, parent);
             
             // What a hack this is.
@@ -40,5 +51,6 @@ public static class Item
     {
         return Random.Range(0, 100) < truePercentage;
     }
+
 }
 
