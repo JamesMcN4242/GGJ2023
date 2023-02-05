@@ -18,7 +18,7 @@ public static class Item
         var largestX = parent.GetChild(9).position.x;
         var exclude = new HashSet<float>() { };
 
-        for (int i = 1; i <= 3; i++)
+        for (int i = 1; i < 3; i++)
 		{
             var isGood = isNextGood();
             var randomInt = UnityEngine.Random.Range(0, goodCategories.Length);
@@ -31,7 +31,11 @@ public static class Item
             while (rangeAlreadySet)
             {
                 rangePos = Random.Range(smallestX, largestX);
-                rangeAlreadySet = exclude.Contains(rangePos);
+                foreach (var item in exclude)
+                {
+                    if (item - 1 <= rangePos && rangePos <= item + 1)
+                        rangeAlreadySet = true;
+                }
             }
             exclude.Add(rangePos);
             //var rangePos = Random.Range(smallestX, largestX);
