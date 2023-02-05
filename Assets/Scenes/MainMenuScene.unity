@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -426,6 +426,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 523467514}
     m_Modifications:
+    - target: {fileID: 477597526, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.b
+      value: 0.26666668
+      objectReference: {fileID: 0}
+    - target: {fileID: 477597526, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 477597526, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.r
+      value: 0.94509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 162544552097553021, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.b
+      value: 0.26666668
+      objectReference: {fileID: 0}
+    - target: {fileID: 162544552097553021, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 162544552097553021, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.r
+      value: 0.94509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299442187733080436, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.b
+      value: 0.26666668
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299442187733080436, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299442187733080436, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.r
+      value: 0.94509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823167361961591711, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 84.7729
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823167361961591711, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -42.386497
+      objectReference: {fileID: 0}
     - target: {fileID: 6832550268628307107, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
       propertyPath: m_Name
       value: MainMenuUI
@@ -513,6 +557,26 @@ PrefabInstance:
     - target: {fileID: 6841530098483850119, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796706030221017777, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc91e9eb657044cb7bb49229aafcc836, type: 3}
+    - target: {fileID: 7796706030221017777, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796706030221017777, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796706030221017777, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796706030221017777, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8255600379014309041, guid: 37bd7ae63b4ebb8459f6411db05d7851, type: 3}
       propertyPath: m_AnchoredPosition.x
