@@ -16,5 +16,9 @@ public class MainMenuState : FlowStateBase
         {
             SceneManager.LoadScene("GameScene");
         }
+        else if (message is string str2 && str2 == "Tutorial")
+        {
+            SceneManager.LoadScene("TutorialScene");
+        }
     }
 }
