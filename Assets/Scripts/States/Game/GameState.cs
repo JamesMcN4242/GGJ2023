@@ -29,7 +29,7 @@ public class GameState : FlowStateBase
     {
         inputSystem = new InputSystem(gameUI);
         groundSystem = new GroundSystem("GroundParent", 15.0f, true, 15.0f);
-        hillSystem = new GroundSystem("HillParent", 50.0f, false, 5.0f);
+        hillSystem = new GroundSystem("HillParent", 5.0f, false, 30.0f);
         colliders = Object.FindObjectsOfType<CollectionCollider>();
         gameUI.SetLives(health.Lives);
     }
