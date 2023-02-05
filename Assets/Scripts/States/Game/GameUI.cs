@@ -6,7 +6,9 @@ public class GameUI : UIStateBase
 {
     [SerializeField]
     private TMPro.TextMeshProUGUI scoreText;
-    
+    [SerializeField]
+    private TMPro.TextMeshProUGUI livesText;
+
     [SerializeField]
     private Image leftBumper;
 
@@ -24,7 +26,12 @@ public class GameUI : UIStateBase
     {
         scoreText.text = $"Score: {score}";
     }
-    
+
+    public void SetLives(int lives)
+    {
+        livesText.text = $"{lives}";
+    }
+
     public void SetBumperAlphaValues(Vector3 heldItemPosition)
     {
         const float minAlpha = 0.01f;

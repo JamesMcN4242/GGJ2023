@@ -29,6 +29,7 @@ public class GameState : FlowStateBase
         inputSystem = new InputSystem(gameUI);
         groundSystem = new GroundSystem();
         colliders = Object.FindObjectsOfType<CollectionCollider>();
+        gameUI.SetLives(health.Lives);
     }
 
     protected override void UpdateActiveState()
@@ -56,5 +57,6 @@ public class GameState : FlowStateBase
         }
         
         gameUI.SetScore(score.Score);
+        gameUI.SetLives(health.Lives);
     }
 }
